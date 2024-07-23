@@ -18,4 +18,29 @@ const productSchema = new mongoose.Schema({
     }
 },{timestamps:true});
 
-export const Product = mongoose.model("Product", productSchema);
+export const Product = mongoose.model("Product", productSchema);    
+
+
+
+const ConnectDB = async () => {
+    try {
+        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
+        console.log(`\n MOngoDb Connected !! DB HOst ${connectionInstance.connection.host}`)
+    } catch (error) {
+        console.log("MongoDB Connection Failed", error)
+        process.exit(1)
+    }
+}
+
+export default ConnectDB
+
+
+const connectDB = async () =>{
+    try {
+        const connectionInstance = await mongoose.connect(`${process.env.Databaseurl}${wheretoexport}`)
+        console.log(`MongoDB Connected !! DB Host ${connectionInstance.connection.host}`)
+    } catch (error) {
+        console.log("Connection Failed", error)
+        process.exit(1)
+    }
+}
