@@ -37,10 +37,26 @@ export default ConnectDB
 
 const connectDB = async () =>{
     try {
-        const connectionInstance = await mongoose.connect(`${process.env.Databaseurl}${wheretoexport}`)
+        const connectionInstance = await mongoose.connect(`${process.env.Databaseurl}/${wheretoexport}`)
         console.log(`MongoDB Connected !! DB Host ${connectionInstance.connection.host}`)
     } catch (error) {
         console.log("Connection Failed", error)
         process.exit(1)
+    }
+}
+
+
+
+
+const ConnectionDBs = async () => {
+    try {
+
+        const ConnectionsInstance = await mongoose.connection(`${process.env.DATABASE_URL}/${DB_NAMES}`)
+        console.log(`MONGODB Connected !! DB HOST ${connectionInstance.connection.host}`)
+        
+    } catch (error) {
+        console.log("DataBase connection Failed", error)
+        process.exit(1)
+        
     }
 }
